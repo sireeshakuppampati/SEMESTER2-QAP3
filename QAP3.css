@@ -1,0 +1,29 @@
+body {
+    line-height: 2;
+    letter-spacing: 0.05em;
+    text-align: justify;
+  }
+  .question {
+    padding: 10px;
+    background-color: #1b272a;
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+  .answer {
+    padding: 10px;
+    background-color: #0b8db2;
+    color: white;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .f1 {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffbc11;
+    color: black;
+    width: 300px;
+    font-size: 0.9em;
+  }

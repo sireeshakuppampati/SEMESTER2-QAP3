@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="QAP3.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+        </style>
+    <title>Practice Questions</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Practice Questions March 25, 2024- SOLUTION</h2>
+ 
+      <section id="question">
+        <p class="question">Question#01</p>
+        <div class="answer">
+          Answer:<br />
+          <div class="f1">
+            <p><b>Name:</b></p>
+            <input id="name" type="text" />
+            <p><b>Age:</b></p>
+            <input id="age" type="text" /> <br />
+            <button onclick="makeObi()" class="make">Make</button
+            ><button onclick="displayObil()" class="display">Display</button>
+            <div id="userList"></div>
+          </div>
+          <script>
+            function User(n, a) {
+            this.name = n;
+            this.age = a;
+        }
+            function makeObi() {
+            var name = document.getElementById('name').value;
+            var age = parseInt(document.getElementById('age').value);
+            var user = new User(name, age);
+            users.push(user);
+            
+        }
+
+        // Function to display all User objects in the userList div
+        function displayObil() {
+            var userListDiv = document.getElementById('userList');
+            userListDiv.innerHTML = ''; // Clear previous content
+            users.forEach(function(user) {
+                var userDiv = document.createElement('div');
+                userDiv.textContent = `Name: ${user.name}, Age: ${user.age}`;
+                userListDiv.appendChild(userDiv);
+            });
+        }
+
+        // Array to store User objects
+        var users = [];
+          </script>
+          <!-- Replace this comment with your code as per requirements given in question1 of question paper.. -->
+        </div>
+      </section>
+      <section id="question2">
+        <p class="question">
+          Question#02 <button onclick="showJSON()">Show JSON</button>
+        </p>
+        <div id="jsonDisplay"></div>
+          Answer:
+            <script>
+              
+            function showJSON() {
+                let displayArea = document.getElementById('jsonDisplay');
+                displayArea.innerHTML = ''; // Clear previous display
+ 
+                // Fetch the JSON file
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'data/records.json', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let users = JSON.parse(xhr.responseText);
+ 
+                        // Format and display each user's data as bullet points
+                        users.forEach(user => {
+                            let userDiv = document.createElement('div');
+                            userDiv.innerHTML = `<ul><li><strong>Name:</strong> ${user.name}</li><li><strong>Company:</strong> ${user.company}</li></ul>`;
+                            displayArea.appendChild(userDiv);
+                        });
+                    }
+                };
+                xhr.send();
+            }
+        </script>
+
+      <section id="question3">
+        <p class="question">
+          Question#03 <button onclick="" id="btnq3">Show Todos</button>
+        </p>
+        <div class="answer">
+          Answer:
+ 
+          <p id="todos-list"></p>
+          <script>
+        
+            document.addEventListener("DOMContentLoaded", function() {
+              fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(data => {
+                  const todosList = document.getElementById('todos-list');
+                  const todos = data.slice(0, 10); // Limiting to first 10 todos for example
+            
+                  todos.forEach(todo => {
+                    const todoItem = document.createElement('div');
+                    todoItem.innerHTML = `
+                      <p><strong>Title:</strong> ${todo.title}</p>
+                      <p><strong>Completed:</strong> ${todo.completed ? 'Yes' : 'No'}</p>
+                      <hr>
+                    `;
+                    todosList.appendChild(todoItem);
+                  });
+                })
+                .catch(error => console.error('Error fetching todos:', error));
+            });
+          </script>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
+ 
